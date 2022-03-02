@@ -133,6 +133,7 @@ function throttle(fn, settings) {
  * Perform an easing based animation with N frames
  * @param {function} callback - The callback function to be triggered on each frame
  * @param {object} settings - A configuration object with values fro 'frames' and 'easing'. The 'frames' defines how much long will be the animation, the 'easing' is to choose what type of easing the animation has to follow.
+ * @returns {function} close - A function to stop the animation before it reached the end
  */
 function animate(fn, settings) {
     frames = settings.frames || 100;

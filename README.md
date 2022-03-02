@@ -53,7 +53,7 @@ throttle(function (progress) {
 <dt><a href="#throttle">throttle(fn, settings)</a> ⇒ <code>function</code></dt>
 <dd><p>Perform an easeing based animation throghout a duration time updated in a deterimed interval</p>
 </dd>
-<dt><a href="#animate">animate(callback, settings)</a></dt>
+<dt><a href="#animate">animate(callback, settings)</a> => <code>function</code></dt>
 <dd><p>Perform an easing based animation with N frames</p>
 </dd>
 </dl>
@@ -112,7 +112,7 @@ Perform an easeing based animation throghout a duration time updated in a deteri
 
 <a name="animate"></a>
 
-## animate(callback, settings)
+## animate(callback, settings) ⇒ <code>function</code>
 Perform an easing based animation with N frames
 
 **Kind**: global function  
