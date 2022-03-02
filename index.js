@@ -104,25 +104,37 @@ function _easeSwitcher(ease, domain, steps) {
 /**
  * Perform an easeing based animation throghout a duration time updated in a deterimed interval 
  * @param {function} fn - The callback function to be triggered on eacn interval
- * @param {object} settings - A configuration object with values for 'ms', 'duration' and 'easing'. The 'ms' value is for the time interval in milliseconds and have 10 as a fallback value, 'duration' defines the animation time duration, and 'easing' is to choose what type of easing the animations has to follow.
+ * @param {object} settings - A configuration object with values for 'interval', 'duration' and 'easing'. The 'interval' value is for the time interval in milliseconds and have 10ms as default value, 'duration' defines the animation time duration and has 1000ms as default value, and 'easing' is to choose what type of easing the animations has to follow and has 'in-out' as default value.
  * @returns {function} close - A function to stop the animation before it reaches the end
  */
 function throttle(fn, settings) {
-    ms = settings.ms || 10;
+    interval = settings.interval || 10;
     duration = settings.duration || 1000;
-    var easing = _easeSwitcher(settings.easing, [0, 1], duration / ms);
-    // var next = easing.next();
+    var easing = _easeSwitcher(settings.easing, [0, 1], duration / interval);
     var closed = false;
+    var _interval;
 
-    var _interval = setInterval(function() {
-        var next = gen.next();
+    function _throttle() {
+        var next = easing.next();
         fn(next.value, function() {
             closed = true;
         });
         if (next.done || closed) {
             clearInterval(_interval);
         }
-    }, ms);
+    }
+    _interval = setInterval(_throttle, interval);
+
+    /* function _throttle() {
+        next = easing.next();
+	fn(next.value, function () {
+            closed = true;
+        });
+	if (!(next.done || closed)) {
+	    setTimeout(_throttle, interval);
+	}
+    } */
+    _throttle();
 
     return function() {
         closed = true;
@@ -135,17 +147,17 @@ function throttle(fn, settings) {
  * @param {object} settings - A configuration object with values fro 'frames' and 'easing'. The 'frames' defines how much long will be the animation, the 'easing' is to choose what type of easing the animation has to follow.
  * @returns {function} close - A function to stop the animation before it reached the end
  */
-function animate(fn, settings) {
+function animation(fn, settings) {
     frames = settings.frames || 100;
-    var gen = _easeSwitcher(settings.ease, [0, 1], frames);
-    var next = gen.next();
+    var easing = _easeSwitcher(settings.ease, [0, 1], frames);
+    var next = easing.next();
     var closed = false;
 
     function _wrapper() {
         fn(next.value, function() {
             closed = true;
         });
-        next = gen.next();
+        next = easing.next();
     }
 
     function _transition() {
@@ -165,6 +177,6 @@ module.exports = {
     easeInOut,
     easeIn,
     easeOut,
-    debounce,
-    animate
+    throttle,
+    animation
 }

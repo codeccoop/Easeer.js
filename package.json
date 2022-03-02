@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "JavaScript module with easing generators and basic animation functions",
   "main": "index.js",
-  "dependencies": {
+  "devDependencies": {
     "jsdoc": "^3.6.10",
     "jsdoc-to-markdown": "^7.1.1"
   },
-  "devDependencies": {},
+  "dependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
