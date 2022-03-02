@@ -38,10 +38,6 @@ throttle(function (progress) {
 ## Functions
 
 <dl>
-<dt><a href="#_scaleGen">_scaleGen(range, domain)</a> ⇒ <code>function</code></dt>
-<dd><p>Given a range and a domain as input, return a function that performs a linear map
-between range and domain values.</p>
-</dd>
 <dt><a href="#easeInOut">easeInOut(domain, steps)</a> ⇒ <code>object</code></dt>
 <dd><p>Perform an ease-in-out curve from min to max evaluated in n steps.</p>
 </dd>
@@ -51,9 +47,6 @@ between range and domain values.</p>
 <dt><a href="#easeIn">easeIn(domain, steps)</a> ⇒ <code>object</code></dt>
 <dd><p>Perform an ease-in curve from min to max evaluated in n steps.</p>
 </dd>
-<dt><a href="#_easeSwitcher">_easeSwitcher(ease, domain, steps)</a></dt>
-<dd><p>Switch between known easings with ease-in-out as fallback</p>
-</dd>
 <dt><a href="#throttle">throttle(fn, settings)</a> ⇒ <code>function</code></dt>
 <dd><p>Perform an easeing based animation throghout a duration time updated in a deterimed interval</p>
 </dd>
@@ -61,20 +54,6 @@ between range and domain values.</p>
 <dd><p>Perform an easing based animation with N frames</p>
 </dd>
 </dl>
-
-<a name="_scaleGen"></a>
-
-## \_scaleGen(range, domain) ⇒ <code>function</code>
-Given a range and a domain as input, return a function that performs a linear map
-between range and domain values.
-
-**Kind**: global function  
-**Returns**: <code>function</code> - scale  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| range | <code>Array</code> | An array with tow values, min and max |
-| domain | <code>Array</code> | An array with tow values, min and max |
 
 <a name="easeInOut"></a>
 
@@ -112,19 +91,6 @@ Perform an ease-in curve from min to max evaluated in n steps.
 
 | Param | Type | Description |
 | --- | --- | --- |
-| domain | <code>Array</code> | An array with tow values, min and max of the easing domain |
-| steps | <code>number</code> | How many steps has to return the easing between min and max |
-
-<a name="_easeSwitcher"></a>
-
-## \_easeSwitcher(ease, domain, steps)
-Switch between known easings with ease-in-out as fallback
-
-**Kind**: global function  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| ease | <code>string</code> | Ease type. It can be {'in', 'out', 'in-out'} |
 | domain | <code>Array</code> | An array with tow values, min and max of the easing domain |
 | steps | <code>number</code> | How many steps has to return the easing between min and max |
 
